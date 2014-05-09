@@ -1,4 +1,14 @@
 <section>
   <h1>About Me</h1>
-  <p>A little something about me.</p>
+
+  {{ site.about_me }}
+
+  <ul>
+    <li>
+      <a href="http://github.com/{{ site.github_user }}">Github</a>
+    </li>
+    <li>
+      <a href="http://{{ site.deviantart_user }}.deviantart.com">Deviantart</a>
+    </li>
+  </ul>
 </section>

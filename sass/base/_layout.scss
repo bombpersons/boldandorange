@@ -1,10 +1,10 @@
 $max-width: 1200px !default;
 
 // Padding used for layout margins
-$pad-min: 18px !default;
-$pad-narrow: 25px !default;
-$pad-medium: 35px !default;
-$pad-wide: 55px !default;
+$pad-min: 10px !default;
+$pad-narrow: 10px !default;
+$pad-medium: 10px !default;
+$pad-wide: 10px !default;
 
 // Sidebar widths used in media queries
 $sidebar-width-medium: 240px !default;
@@ -14,9 +14,9 @@ $sidebar-width-wide: 300px !default;
 
 $indented-lists: false !default;
 
-$header-font-size: 1em !default;
-$header-padding-top: 1.5em !default;
-$header-padding-bottom: 1.5em !default;
+$header-font-size: 1.5em !default;
+$header-padding-top: 0.25em !default;
+$header-padding-bottom: 0.25em !default;
 
 .group { @include pie-clearfix; }
 
@@ -44,8 +44,53 @@ $header-padding-bottom: 1.5em !default;
 }
 
 body {
+  > #sidebar {
+      width: $sidebar-width-medium;
+    @media only screen and (min-width: 480px) {
+      width: $sidebar-width-medium;
+    }
+    @media only screen and (min-width: 768px) {
+      width: $sidebar-width-medium;
+    }
+    @media only screen and (min-width: 992px) {
+      width: $sidebar-width-wide;
+    }
+  }
+
+  > #maincontent {
+      padding-left: $sidebar-width-medium;
+    @media only screen and (min-width: 480px) {
+      padding-left: $sidebar-width-medium;
+    }
+    @media only screen and (min-width: 768px) {
+      padding-left: $sidebar-width-medium;
+    }
+    @media only screen and (min-width: 992px) {
+      padding-left: $sidebar-width-wide;
+    }
+  }
+}
+
+#maincontent {
+  > header {
+    font-size: $header-font-size;
+    padding-top: $header-padding-top;
+    padding-bottom: $header-padding-bottom;
+  }
+
+  article {
+    p {
+      margin-bottom: 0.5em;
+    }
+    header {
+      padding-bottom: 0.5em;
+      margin-bottom: 0.5em;
+    }
+  }
+}
+
+body {
   -webkit-text-size-adjust: none;
-  max-width: $max-width;
   position: relative;
   margin: 0 auto;
   > header, > nav, > footer, #content > article, #content > div > article, #content > div > section {
@@ -82,11 +127,6 @@ body {
       margin-right: $pad-wide;
     }
   }
-  > header {
-    font-size: $header-font-size;
-    padding-top: $header-padding-top;
-    padding-bottom: $header-padding-bottom;
-  }
 }
 
 #content {
@@ -122,7 +162,7 @@ body.sidebar-footer {
 }
 
 @media only screen and (min-width: 550px) {
-  body > header { font-size: $header-font-size; }
+  #maincontent > header { font-size: $header-font-size; }
 }
 @media only screen and (min-width: 750px) {
   aside.sidebar { @include collapse-sidebar; }
@@ -132,14 +172,13 @@ body.sidebar-footer {
 }
 @media only screen and (min-width: 768px) {
   body { -webkit-text-size-adjust: auto; }
-  body > header { font-size: $header-font-size * 1.2; }
+  #maincontent > header { font-size: $header-font-size * 1.2; }
   #main {
     padding: 0;
     margin: 0 auto;
   }
   #content {
     overflow: visible;
-    margin-right: $sidebar-width-medium;
     position: relative;
     .no-sidebar & { margin-right: 0; border-right: 0; }
     .collapse-sidebar & { margin-right: 20px; }
@@ -167,8 +206,7 @@ body.sidebar-footer {
 }
 
 @media only screen and (min-width: 992px) {
-  body > header { font-size: $header-font-size * 1.3; }
-  #content { margin-right: $sidebar-width-wide; }
+  #maincontent > header { font-size: $header-font-size * 1.3; }
   #content {
     > div, > article {
       padding-top: $pad-wide/2;
@@ -189,4 +227,3 @@ body.sidebar-footer {
     ul, ol { margin-left: 0; }
   }
 }
-

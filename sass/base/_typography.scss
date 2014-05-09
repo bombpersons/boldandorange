@@ -14,6 +14,10 @@ $header-subtitle-font-family: $heading-font-family !default;
 .serif { font-family: $serif; }
 .mono { font-family: $mono; }
 
+p {
+  font-family: $sans;
+}
+
 body > header h1 {
   font-size: 2.2em;
   @extend .heading;
@@ -161,4 +165,3 @@ article blockquote {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-
